@@ -1,0 +1,149 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>IG.ENMS.Starlink</RootNamespace>
+    <Configurations>Debug;Release;WindowsService</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'WindowsService|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\WindowsService</OutputPath>
+    <DefineConstants></DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <AssemblyName>ig-enms-starlink-winservice</AssemblyName>
+    <NoStdLib>true</NoStdLib>
+    <IntermediateOutputPath>obj\WindowsService</IntermediateOutputPath>
+    <NoWarn></NoWarn>
+    <Nullable></Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Controller\**" />
+    <Content Remove="Controller\**" />
+    <EmbeddedResource Remove="Controller\**" />
+    <None Remove="Controller\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EFCore.BulkExtensions" Version="7.1.6" />
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="7.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Serilog" Version="3.0.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="7.0.0" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="7.0.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCaching" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings_DEV.json.DEV" />
+    <None Remove="appsettings_PRD.json.PRD" />
+    <None Remove="appsettings_STG.json.STG" />
+    <None Remove="Services\" />
+    <None Remove="Hubs\" />
+    <None Remove="Models\" />
+    <None Remove="StateMachines\" />
+    <None Remove="Models\System\" />
+    <None Remove="Data\" />
+    <None Remove="Services\Pollers\" />
+    <None Remove="Controllers\" />
+    <None Remove="logs\applog-20230818.txt" />
+    <None Remove="logs\.DS_Store" />
+    <None Remove="logs\applog-2023081823.txt" />
+    <None Remove="logs\applog-2023081822.txt" />
+    <None Remove="logs\applog-2023081816.txt" />
+    <None Remove="logs\applog-2023081817.txt" />
+    <None Remove="logs\applog-2023081815.txt" />
+    <None Remove="logs\applog-2023090512.txt" />
+    <None Remove="logs\applog-2023090513.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Hubs\" />
+    <Folder Include="Hubs\" />
+    <Folder Include="StateMachines\" />
+    <Folder Include="Services\Pollers\" />
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Data\AccountData.cs" />
+    <Compile Remove="Data\DBWriterQueue.cs" />
+    <Compile Remove="Models\DBStatement.cs" />
+    <Compile Remove="Models\Starlink\AccountsModel.cs" />
+    <Compile Remove="Models\Starlink\UserTerminalsModel.cs" />
+    <Compile Remove="Models\Starlink\ServiceLinesModel.cs" />
+    <Compile Remove="Models\Starlink\AccessTokenResponseModel.cs" />
+    <Compile Remove="Controllers\GetAccountHierarchyController.cs" />
+    <Compile Remove="Services\DBRepository.cs" />
+    <Compile Remove="Services\DBWriter.cs" />
+    <Compile Remove="Services\StarlinkAPIPoller.cs" />
+    <Compile Remove="Data\Telemetry.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ig-enms-models">
+      <HintPath>..\..\..\ig-enms-models\ig-enms-models\bin\Debug\net7.0\ig-enms-models.dll</HintPath>
+    </Reference>
+    <Reference Include="ig-enms-models">
+      <HintPath>..\..\ig-enms-models\ig-enms-models\ig-enms-models\bin\Debug\net7.0\ig-enms-models.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="persistence\starlinkSM.json" />
+    <Content Remove="persistence\service-lines.json" />
+    <Content Remove="persistence\subscriptions.json" />
+    <Content Remove="persistence\user-terminals.json" />
+    <Content Remove="persistence\accounts.json" />
+    <Content Remove="persistence\accounts-638295154770317170.json" />
+    <Content Remove="persistence\service-lines-638295154770317170.json" />
+    <Content Remove="persistence\addresses-638295154770317170.json" />
+    <Content Remove="persistence\user-terminals-638295154770317170.json" />
+    <Content Remove="persistence\subscriptions-638295154770317170.json" />
+    <Content Remove="persistence\available-products-638295154770317170.json" />
+    <Content Remove="persistence\telemetry-638295154770317170.json" />
+    <Content Remove="persistence\usage-billingcycle-638295154770317170.json" />
+    <Content Remove="persistence\usage-dailydata-638295154770317170.json" />
+    <Content Remove="persistence\accounts-638295157756451280.json" />
+    <Content Remove="persistence\service-lines-638295157756451280.json" />
+    <Content Remove="persistence\addresses-638295157756451280.json" />
+    <Content Remove="persistence\user-terminals-638295157756451280.json" />
+    <Content Remove="persistence\subscriptions-638295157756451280.json" />
+    <Content Remove="persistence\available-products-638295157756451280.json" />
+    <Content Remove="persistence\telemetry-638295157756451280.json" />
+    <Content Remove="persistence\usage-billingcycle-638295157756451280.json" />
+    <Content Remove="persistence\usage-dailydata-638295157756451280.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ig-enms-models\ig-enms-models\ig-enms-models\ig-enms-models.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

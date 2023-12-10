@@ -1,0 +1,64 @@
+﻿{
+  "AppSettings": {
+    "SourceUrls": {
+      "AuthUrl": "https://api.starlink.com/auth/connect/token",
+      "BaseUrl": "https://web-api.starlink.com/enterprise/v1",
+      "TelemetryUrl": "https://web-api.starlink.com/telemetry/stream/v1/telemetry"
+    },
+    "Credentials": {
+      "ClientId": "61903a89-0daf-44b0-970a-f0dc22ddf0ae",
+      "ClientSecret": "vusdi9-nasneg-qycDeq",
+      "GrantType": "client_credentials"
+    },
+    "PollFrequencies": {
+      "ServiceData": 600,
+      "TelemetryData": 300,
+      "UsageData": 300
+    },
+    "StateMachine": {
+      "PersistenceLocation": "D:\\Data\\ig-enms-starlink-winservice\\persistence",
+      "PersistenceStartDelay": 15,
+      "PersistenceFrequency": 300
+    },
+    "AppLogging": {
+      "FileLocation": "C:\\Data\\ig-enms-starlink-winservice\\Log\\applog-.txt"
+    },
+    "CacheSettings": {
+      "UserAccountRefreshMinutes": 15
+    }
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Information"
+    }
+  },
+  "Kestrel": {
+    "EndPoints": {
+      "Http": {
+        "Url": "http://0.0.0.0:11690"
+      }
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "IgenmsContext": "Server=igcssc-db01;Database=igenms;user id=enmsstarlinkuser;password=UserCsscEnms123#;MultipleActiveResultSets=true;Encrypt=False",
+    "IgcmsContext": "Server=igcssc-db01;Database=igcms;user id=enmsstarlinkuser;password=UserCsscEnms123#;MultipleActiveResultSets=true;Encrypt=False"
+  },
+  "CleanUpPolicy": {
+    "Unit": "Hours",
+    "TelemetryData": "12",
+    "UsageData": "12"
+  },
+  "RetentionPolicy": {
+    "Unit": "Days",
+    "TelemetryData": "30",
+    "UsageData_Billing": "124",
+    "UsageData_Daily": "62"
+  },
+  "SuspensionPolicy": {
+    "DataPull": "false",
+    "JsonProcessor": "true",
+    "SaveToDisk": "false"
+  }
+}

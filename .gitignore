@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ig-enms-models/obj
+/ig-enms-starlink/obj
+/.vs
+/ig-enms-starlink/.vs
